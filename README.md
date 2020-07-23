@@ -26,6 +26,8 @@ There are eigth "speed levels". Each level has different random values ranges fo
 When the xmas is off, it is on level 0.
 When the xmas is turned on,  it is set to level 1.
 
+![image info](./extras/oled_display.jpeg)
+
 **Note**: It is the responsibility of the user to generate the code that changes levels at desired time.
 
 
