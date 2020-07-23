@@ -3,7 +3,7 @@
  * Copyright (C) 2020  Luis Acosta <zerfoinder@gmail.com>
  *
  * XmasTree library, This library for Arduino is used to emulate
- * Back to the Future's Xmas Tree in 1.3in I2C OLED Display.
+ * Back to the Future's Time Machine XmasTree in a 1.3inch I2C OLED Display.
  *
  * www.github.com/Zerfoinder/TimeMachine_XmasTree (github as default source provider)
  *
@@ -25,9 +25,9 @@
 
 /**
  *  name:         XmasTree
- *  version:      1.0
+ *  version:      0.1.1
  *  Author:       Luis Acosta <zerfoinder@gmail.com>
- *  Date:         2020-07-16
+ *  Date:         2020-07-22
  *  Description:  XmasTree is an Arduino Library for emulate Back to the
  *  Future Delorean XmasTree in 1.3in I2C OLED Display.
  */
@@ -37,9 +37,9 @@
 
 namespace bttf::timemachine {
 
-    U8G2_SH1106_128X64_NONAME_F_HW_I2C oled_display(U8G2_R0, U8X8_PIN_NONE);
+    //U8G2_SH1106_128X64_NONAME_F_HW_I2C oled_display(U8G2_R0, U8X8_PIN_NONE);
 
-    /* 
+    /*
      * Each Xmas column takes its random value
      *  according to its current level +-----------------------------------+
      *                                 |           L  E  V  E  L  S        |
@@ -49,22 +49,23 @@ namespace bttf::timemachine {
     const byte XmasTree::randomMin[] = { 0,  0,  1,  2,  4,  5,  7, 11, 14 };
     const byte XmasTree::randomMax[] = { 0,  3,  5,  7, 10, 13, 15, 19, 22 };
 
-    const unsigned long XmasTree::loopSpeed[] = {250, 350, 400};
+    const unsigned long XmasTree::loopSpeed[] = {250, 300, 350};
 
-    XmasTree::XmasTree() {
+    XmasTree::XmasTree()
+        : oled_display { U8G2_SH1106_128X64_NONAME_F_HW_I2C(U8G2_R0, U8X8_PIN_NONE) } {
         srand(micros());
         _reset();
     }
 
     void XmasTree::init(void) {
         oled_display.begin();
-        oled_display.setDrawColor(1);
+        oled_display.setDrawColor(2);
     }
 
     void XmasTree::on(void) {
+        _lastLoopMillis = millis();
         _state = true;
         _level = 1;
-        _lastLoopMillis = millis();
     }
 
     void XmasTree::off(void) {
@@ -101,6 +102,7 @@ namespace bttf::timemachine {
 
         if (millis() >= _lastLoopMillis + XmasTree::loopSpeed[speedIndex]) {
             _lastLoopMillis += XmasTree::loopSpeed[speedIndex];
+
             _update();
         }
     }
@@ -114,11 +116,11 @@ namespace bttf::timemachine {
 
         for (int col = 0; col < xmasColumns; col++) {
 
-            if(_columnValues[col] < maxColumnValue){
+            if (_columnValues[col] < maxColumnValue) {
                 _columnValues[col] = (rand() % (XmasTree::randomMax[_level] - XmasTree::randomMin[_level] + 1 )) + XmasTree::randomMin[_level];
             }
 
-            if(_columnValues[col] > maxColumnValue)
+            if (_columnValues[col] > maxColumnValue)
                 _columnValues[col] = maxColumnValue;
 
             x = rootPointX;

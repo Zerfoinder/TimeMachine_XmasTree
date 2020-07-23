@@ -6,9 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-FluxCapacitor	KEYWORD1
-FluxType		KEYWORD1
-FluxState		KEYWORD1
+XmasTree	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -17,11 +15,9 @@ FluxState		KEYWORD1
 init			KEYWORD2
 on				KEYWORD2
 off				KEYWORD2
-flash			KEYWORD2
 setLevel		KEYWORD2
 next			KEYWORD2
 level			KEYWORD2
-leds			KEYWORD2
 state			KEYWORD2
 loop			KEYWORD2
 

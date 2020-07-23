@@ -3,7 +3,7 @@
  * Copyright (C) 2020  Luis Acosta <zerfoinder@gmail.com>
  *
  * XmasTree library, This library for Arduino is used to emulate
- * Back to the Future's Xmas Tree in 1.3in I2C OLED Display.
+ * Back to the Future's Time Machine XmasTree in a 1.3inch I2C OLED Display.
  *
  * www.github.com/Zerfoinder/TimeMachine_XmasTree (github as default source provider)
  *
@@ -25,9 +25,9 @@
 
 /**
  *  name:         XmasTree
- *  version:      1.0
+ *  version:      0.1.1
  *  Author:       Luis Acosta <zerfoinder@gmail.com>
- *  Date:         2020-07-16
+ *  Date:         2020-07-22
  *  Description:  XmasTree is an Arduino Library for emulate Back to the
  *  Future Delorean XmasTree in 1.3in I2C OLED Display.
  */
@@ -53,6 +53,11 @@ namespace bttf::timemachine {
     class XmasTree {
 
         /************ CONSTANTS ***************/
+
+        /**
+         * Oled display object
+         */
+        U8G2_SH1106_128X64_NONAME_F_HW_I2C oled_display;
 
         /**
          * Flux Capacitor rutine levels to reach.
