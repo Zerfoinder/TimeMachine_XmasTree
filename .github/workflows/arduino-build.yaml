@@ -4,7 +4,8 @@ jobs:
   build:
     name: ${{ matrix.arduino-boards-fqbn }} - test compiling examples
     runs-on: ubuntu-latest
-
+    env:
+      REQUIRED_LIBRARIES: U8g2, Wire
     strategy:
       matrix:
         arduino-boards-fqbn:
@@ -29,3 +30,4 @@ jobs:
         with:
           arduino-board-fqbn: ${{ matrix.arduino-boards-fqbn }}
           platform-url: ${{ matrix.platform-url }}
+          required-libraries: ${{ env.REQUIRED_LIBRARIES }}
