@@ -1,4 +1,5 @@
 # Time Machine - Xmas Tree
+
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Zerfoinder/TimeMachine_XmasTree)
 ![GitHub All Releases](https://img.shields.io/github/downloads/Zerfoinder/TimeMachine_XmasTree/total)
 ![GitHub](https://img.shields.io/github/license/Zerfoinder/TimeMachine_XmasTree)
@@ -21,7 +22,7 @@ If you like **XmasTree**, give it a star, or fork it and contribute!
 ## How it works
 
 XmasTree uses a a 1.3inch I2C OLED monochrome display.has 13 LED lights.
-XmasTree displays a 10 x 20 5-pixel square matrix. Each matrix column displays random values, depending on the level it is at. 
+XmasTree displays a 10 x 20 5-pixel square matrix. Each matrix column displays random values, depending on the level it is at.
 There are eigth "speed levels". Each level has different random values ranges for each xmas column. Levels goes from level 1 to level 8.
 When the xmas is off, it is on level 0.
 When the xmas is turned on,  it is set to level 1.
@@ -29,7 +30,6 @@ When the xmas is turned on,  it is set to level 1.
 ![image info](./extras/oled_display.jpeg)
 
 **Note**: It is the responsibility of the user to generate the code that changes levels at desired time.
-
 
 ## Usage
 
@@ -81,13 +81,17 @@ void loop() {
 ```
 
 ## Components and functions
+
 ### XmasTree Class
+
 #### Example
+
 ```C++
 XmasTree tree; // create an object called: tree. (No parameters are required).
 ```
 
 #### Public methods
+
 | Method | Description |
 | ---------- | ----------- |
 | `XmasTree tree();` | Constructor. |
@@ -101,9 +105,11 @@ XmasTree tree; // create an object called: tree. (No parameters are required).
 | `.loop();`    | function used to manage concurrent actions. It should be ALWAYS added in the end of sketch loop() method. |
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://paypal.me/zerfoinder)
 
 ## License
+
 This library is licensed under [GPLv3](https://www.gnu.org/licenses/quick-guide-gplv3.html).
